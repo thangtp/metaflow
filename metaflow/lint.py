@@ -197,9 +197,9 @@ def check_split_join_balance(graph):
            "there is a matching join for every split."
 
     def traverse(node, split_stack):
-        if node.type == 'linear':
+        if node.type in ('split-or', 'linear'):
             new_stack = split_stack
-        elif node.type in ('split-or', 'split-and', 'foreach'):
+        elif node.type in ('split-and', 'foreach'):
             new_stack = split_stack + [('split', node.out_funcs)]
         elif node.type == 'end':
             if split_stack:
