@@ -376,8 +376,8 @@ class NativeRuntime(object):
                 # Next step is a foreach child
                 self._queue_task_foreach(task, next_steps)
             elif condition:
-                if next_steps[0]:
-                    next_step = task.results[condition]
+                if task.results[condition]:
+                    next_step = next_steps[0]
                 else:
                     next_step = next_steps[1]
 
